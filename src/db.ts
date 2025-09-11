@@ -1,8 +1,12 @@
 //user model / schema via mongooseeeee
 import mongoose from "mongoose";
 import {model, Schema } from "mongoose";
+import dotenv from 'dotenv';
+dotenv.config();
 
-mongoose.connect("mongodb+srv://anisoft:LrQVmoBIkkkzLmed@cluster0.llrzqgd.mongodb.net/Brainly");
+const MONGO_URI = process.env.MONGO_URI as string;
+
+mongoose.connect(MONGO_URI);
 
 
  const userSchema = new Schema({
