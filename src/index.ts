@@ -29,27 +29,7 @@ app.post("/api/v1/signup", async(req, res) => {
 }
 });
 
-app.post("/api/v1/signin", async(req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    const existingUser = await userModel.findOne({
-        username,
-        password
-    })
-    if(existingUser) {
-        const token = jwt.sign({
-            id: existingUser.id
-        }, JWT_PASSWORD) 
-        res.json({
-            token
-        })
-    } else {
-        res.status(403).json({
-            message: "Incorrect Credential"
-        })
-    }
-    
-});
+
 
 app.post("/api/v1/content", UserMiddleware , async (req, res) => {
     console.log("Checking");
